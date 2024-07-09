@@ -5,6 +5,8 @@ import ProductView from "./pages/ProductView.jsx"
 import Navbar from "./components/Navbar.jsx"
 import Footer from "./components/Footer.jsx"
 import Cart from "./pages/Cart.jsx"
+import Checkout from "./pages/Checkout.jsx"
+import OrderConfirm from "./pages/OrderConfirm.jsx"
 import './App.css'
 import { ContextProvider } from "./data/Context.jsx"
 
@@ -18,6 +20,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/order-confirm" element={<OrderConfirm />} />
           <Route path="/product-view/:id" element={<ProductView />} />
         </Routes>
         <Footer />

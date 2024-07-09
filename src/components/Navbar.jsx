@@ -93,7 +93,7 @@ export default function Navbar() {
                         <Cart />
                         <p className="md:block hidden">Cart</p>
 
-                        <div className="absolute top-0 left-[-10px] h-[15px] w-[15px] flex justify-center items-center bg-[#b61e1e] text-white text-[8px] rounded-full">{cartItems?.length}</div>
+                        <div className={`absolute ${cartItems?.length == 0 ? "hidden" : "flex"} top-0 left-[-10px] h-[15px] w-[15px] justify-center items-center bg-[#b61e1e] text-white text-[8px] rounded-full`}>{cartItems?.length}</div>
                     </div>
                 </Link>
 
