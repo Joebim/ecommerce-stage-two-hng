@@ -9,18 +9,19 @@ import { ReactComponent as Search } from '../assets/search.svg'
 import { ReactComponent as Menu } from '../assets/menu.svg'
 import { Link, useLocation } from 'react-router-dom'
 import { useContext } from 'react'
-import { Context } from '../data/Context'
+import { Context } from '../api/Context'
 
 export default function Navbar() {
 
     const data = useContext(Context)
 
     const [cartItems, setcartItems] = useState()
-    
+
     useEffect(() => {
-      setcartItems(data.data.cartItems)
+        setcartItems(data.cart)
     }, [data])
-    
+
+
 
     const location = useLocation()
 
@@ -29,13 +30,16 @@ export default function Navbar() {
 
     return (
         <div className={`${path == "" ? "sticky" : "absolute"} top-0 w-full bg-white flex flex-row justify-between h-[80px] items-center px-[30px] sm:px-[90px] sm:shadow-md z-[100]`}>
-            
-            <div className="flex flex-row gap-[5px] items-center">
-            <Menu className=" md:block lg:hidden cursor-pointer"/>
-                <Logo style={{ color: "#000000" }} />
 
-                <p>Furniflex</p>
-            </div>
+            <Link to="/">
+                <div className="flex flex-row gap-[5px] items-center">
+                    <Menu className=" md:block lg:hidden cursor-pointer" />
+                    <Logo style={{ color: "#000000" }} />
+
+                    <p>Furniflex</p>
+                </div>
+            </Link>
+
 
             <div className="flex-row gap-[30px] items-center md:hidden lg:flex hidden">
                 <Link className='cursor-pointer' to="/">
@@ -74,10 +78,10 @@ export default function Navbar() {
 
 
                 <Link to="" className='md:hidden block'>
-<div className="py-[5px] hover:border-b-[1px] hover:border-grey">
-    <Search className="" />
-</div>
-                    
+                    <div className="py-[5px] hover:border-b-[1px] hover:border-grey">
+                        <Search className="" />
+                    </div>
+
 
                 </Link>
 

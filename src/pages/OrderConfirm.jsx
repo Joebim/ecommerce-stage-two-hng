@@ -16,7 +16,6 @@ export default function OrderConfirm() {
 
     const deliveryFee = 50000
 
-    console.log('cartItems', cartItems)
 
     return (
         <div className="pt-[80px] px-[30px] mb-[70px] sm:px-[90px]">

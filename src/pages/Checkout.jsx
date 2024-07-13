@@ -10,6 +10,7 @@ import { ReactComponent as Verified } from "../assets/verified.svg"
 import { ReactComponent as ArrowRight } from "../assets/arrow-right.svg"
 import { ReactComponent as Tick } from "../assets/tick.svg"
 import { ReactComponent as Opay } from "../assets/opay.svg"
+import CheckoutCard from '../components/CheckoutCard'
 
 
 export default function Cart(props) {
@@ -30,6 +31,14 @@ export default function Cart(props) {
     function total(numbers) {
         return numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
     }
+
+    function flatten(arr) {
+        return arr.reduce((flat, toFlatten) => flat.concat(toFlatten), []);
+    }
+
+    const prices = flatten(cartItems.map(item => item.current_price.map(price => price.NGN[0]) * item?.quantity));
+
+
 
     return (
         <div className='pt-[80px] px-[30px] mb-[70px] sm:px-[90px] bg-white'>
@@ -97,11 +106,11 @@ export default function Cart(props) {
                                     <div key={product.id} className="flex flex-row gap-[10px] items-center">
                                         <Link to={`/product-view/${product.id}`} state={product}>
                                             <div className="bg-cover bg-center bg-no-repeat h-[100px] w-[100px]"
-                                                style={{ backgroundImage: `url(${product.img})` }}
+                                                style={{ backgroundImage: `url(${`https://api.timbu.cloud/images/`}${product.photos[0].url})` }}
                                             >
                                             </div>
                                         </Link>
-                                        <div className="w-[50%]"> <p className="">{product.product_name}</p></div>
+                                        <div className="w-[50%]"> <p className="">{product.name}</p></div>
 
                                     </div>
                                 ))}
@@ -165,55 +174,7 @@ export default function Cart(props) {
                     </div>
 
 
-                    <div className="flex-[3] gap-[15px] self-start flex flex-col py-[12px] rounded-[6px] bg-white shadow-md w-[100%] sm:w-[400px] p-[20px]">
-
-                        <div className="flex flex-row justify-between gap-[10px] text-[13px]">
-
-                            <p className="">Order Summary</p>
-                            <p className="">{cartItems.length} items</p>
-
-                        </div>
-                        <hr className='border-grey' />
-                        <div className="flex flex-row justify-between gap-[10px] text-[13px]">
-
-                            <p className="">Delivery Charges</p>
-                            <p className="">{price(deliveryFee)}</p>
-
-                        </div>
-                        <hr className='border-grey' />
-                        <div className="flex flex-row justify-between gap-[10px] text-[13px]">
-
-                            <p className="">Subtotal</p>
-                            <p className="">{price(total(cartItems.map((items) => items.price)) + deliveryFee)}</p>
-
-                        </div>
-                        <hr className='border-grey' />
-                        <div className="flex flex-col justify-between gap-[6px] text-[13px]">
-                            <div className="flex flex-row justify-between gap-[10px]">
-                                <p className="font-bold">Total</p>
-                                <p className="">{price(total(cartItems.map((items) => items.price)) + deliveryFee)}</p>
-                            </div>
-
-                            <p className='self-end text-[11px]'>Delivery charges included</p>
-                        </div>
-                        <Link to="/order-confirm" state={cartItems} className='w-full'>
-                            <button className="py-[12px] w-full rounded-[6px] bg-primary text-white flex justify-center items-center text-[11px] cursor-pointer hover:bg-black duration-150">Continue to Checkout</button>
-                        </Link>
-                        <hr className='border-grey' />
-
-                        <div className="flex flex-row gap-[5px]">
-                            <p className="text-[11px]">We accept</p>
-                            <Mastercard />
-                            <Visa />
-                        </div>
-
-                        <div className="flex flex-row gap-[5px]">
-                            <Lock />
-                            <p className="text-[11px]">Transaction are 100% secure</p>
-                        </div>
-                    </div>
-
-
+                    <CheckoutCard/>
 
                 </div>
             </div>
