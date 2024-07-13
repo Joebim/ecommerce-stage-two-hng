@@ -8,7 +8,7 @@ import Cart from "./pages/Cart.jsx"
 import Checkout from "./pages/Checkout.jsx"
 import OrderConfirm from "./pages/OrderConfirm.jsx"
 import './App.css'
-import { ContextProvider } from "./data/Context.jsx"
+import { ContextProvider } from "./api/Context.jsx"
 
 
 function App() {

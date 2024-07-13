@@ -6,7 +6,7 @@ export default function Home() {
     return (
         <>
             <div className="bg-white sm:bg-[#F2F2F2]">
-                <div className="h-[60vh] sm:h-[100vh] m-[15px] sm:m-0 pt-0 px-[15px] sm:px-[90px] flex items-center bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${bgImage})` }}>
+                <div className="h-[300px] sm:h-[100vh] m-[15px] sm:m-0 pt-0 px-[15px] sm:px-[90px] flex items-center bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${bgImage})` }}>
                     <div className="hidden sm:flex flex-col gap-[40px]">
                         <div className=" w-[600px]">
                             <h1 className="text-white font-bold text-[40px]">Transform Your Home with Elegance and Comfort</h1>

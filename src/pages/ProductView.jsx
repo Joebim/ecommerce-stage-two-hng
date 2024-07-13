@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ProductCarousel from '../components/productCarousel'
-import { productData } from '../data/productData'
+import { productData } from '../api/productData'
 import { useLocation } from 'react-router-dom'
 import { Rating } from '../components/Rating'
 import { Like } from '../components/Like'
@@ -8,12 +8,16 @@ import { price } from '../components/price'
 import { ReactComponent as Honour } from "../assets/honour-star.svg"
 import { ReactComponent as Truck } from "../assets/truck.svg"
 import { ReactComponent as Refresh } from "../assets/refresh.svg"
+import { useContext } from 'react'
+import { Context } from '../api/Context'
 
 export default function ProductView(props) {
 
   const location = useLocation()
 
   const [product, setProduct] = useState(location.state)
+
+  const { addToCart } = useContext(Context);
 
   useEffect(() => {
     setProduct(location.state)
@@ -57,7 +61,7 @@ export default function ProductView(props) {
               <div className="flex flex-row items-center gap-[10px]"><Rating rating={product.rating} /><p className='text-[13px] text-[#913752]'>({product.number_rated} verified ratings)</p></div>
               <hr className='border-grey' />
 
-              <button className="py-[12px] rounded-[6px] bg-primary text-white flex justify-center items-center text-[12px] cursor-pointer hover:bg-black duration-150">Add to Cart</button>
+              <button onClick={() => addToCart(product)} className="py-[12px] rounded-[6px] bg-primary text-white flex justify-center items-center text-[12px] cursor-pointer hover:bg-black duration-150">Add to Cart</button>
 
               <Like isLiked={product.is_liked} />
 
