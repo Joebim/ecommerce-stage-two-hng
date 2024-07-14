@@ -11,7 +11,8 @@ const useFetch = (url) => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`${url}`,
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}${url}`,
+        // const response = await axios.get(`${url}`,
         );
         setData(response);
       } catch (error) {
