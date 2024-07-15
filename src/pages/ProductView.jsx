@@ -33,8 +33,8 @@ export default function ProductView(props) {
 
             <div className="flex-[1.1] flex flex-col gap-[20px]">
               <div className=" bg-cover bg-center bg-no-repeat h-[300px] w-[100%]"
-                style={{ backgroundImage: `url(${product.img})` }}
-              >
+                                        style={{ backgroundImage: `url(${`https://api.timbu.cloud/images/`}${product?.photos[0]?.url})` }}
+                                        >
               </div>
               <a href='' aria-disabled="true" className="hover:text-primary cursor-pointer text-[15px] underline">Share this product</a>
             </div>
@@ -44,14 +44,14 @@ export default function ProductView(props) {
 
             <div className="flex-[1] relative flex flex-col gap-[15px] p-[20px]">
               <div className="w-[80%]">
-                <p className="text-[13px]">{product.product_name}</p>
+                <p className="text-[13px]">{product.name}</p>
               </div>
               <hr className='border-grey' />
 
 
 
               <div className="flex flex-row gap-[10px] items-center">
-                <p className='text-[14px]'>{price(product.price)}</p>
+                <p className='text-[14px]'>{price(product?.current_price.map(price => price.NGN[0]))}</p>
                 <p className="text-grey line-through text-[14px]">{price(product.discounted_price)}</p>
                 <div className="p-[3px] bg-primaryLight text-[11px]">-{product.percentage_off}%</div>
               </div>
@@ -63,7 +63,7 @@ export default function ProductView(props) {
 
               <button onClick={() => addToCart(product)} className="py-[12px] rounded-[6px] bg-primary text-white flex justify-center items-center text-[12px] cursor-pointer hover:bg-black duration-150">Add to Cart</button>
 
-              <Like isLiked={product.is_liked} />
+              <Like product={product} />
 
             </div>
 
