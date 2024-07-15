@@ -8,7 +8,7 @@ export default function ProductList() {
   const [barToggle, setBarToggle] = useState(1)
 
   const [currentPage, setCurrentPage] = useState(1)
-  const { data, loading, error } = useFetch(`/api/?organization_id=${import.meta.env.VITE_ORGANIZATION_ID}&reverse_sort=false&page=${currentPage}&size=12&Appid=${import.meta.env.VITE_APP_ID}&Apikey=${import.meta.env.VITE_API_KEY}`)
+  const { data, loading, error } = useFetch(`/?organization_id=${import.meta.env.VITE_ORGANIZATION_ID}&reverse_sort=false&page=${currentPage}&size=12&Appid=${import.meta.env.VITE_APP_ID}&Apikey=${import.meta.env.VITE_API_KEY}`)
 
 
   const [products, setProducts] = useState(data?.data?.items)
