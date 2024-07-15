@@ -11,7 +11,7 @@ import useFetch from '../api/useFetch';
 
 
 
-export default function ProductCarousel(props) {
+export default function ProductCarousel() {
   const { data, loading, error } = useFetch(`/?organization_id=${import.meta.env.VITE_ORGANIZATION_ID}&reverse_sort=false&page=1&size=12&Appid=${import.meta.env.VITE_APP_ID}&Apikey=${import.meta.env.VITE_API_KEY}`)
 
 

@@ -45,7 +45,7 @@ export default function Home() {
 
 
             <div className="">
-                <ProductList ref={targetRef}/>
+                <ProductList parentRef={targetRef}/>
             </div>
         </>
     )

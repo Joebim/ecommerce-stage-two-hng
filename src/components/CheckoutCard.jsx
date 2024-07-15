@@ -40,7 +40,7 @@ export default function CheckoutCard() {
     return (
 
         <>
-            <div class={`${checkoutLoading ? "block" : "hidden"} w-full h-[100vh] fixed top-0 left-0 bg-white opacity-75 z-50`}>
+            <div className={`${checkoutLoading ? "block" : "hidden"} w-full h-[100vh] fixed top-0 left-0 bg-white opacity-75 z-50`}>
                 <Loader />
             </div>
 
