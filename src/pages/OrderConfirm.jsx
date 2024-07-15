@@ -4,32 +4,28 @@ import { ReactComponent as Tick } from "../assets/tick.svg"
 import { price } from '../components/price';
 import { ReactComponent as TruckShip } from "../assets/truck-ship.svg"
 import { useLocation } from 'react-router-dom';
-import { Context } from '../api/Context'
-import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 
 export default function OrderConfirm() {
 
-    const data = useContext(Context)
-
-    const [cartItems, setcartItems] = useState(data.cart)
+    const location =useLocation();
+    const [cartItems, setcartItems] = useState()
 
     const deliveryFee = 50000
 
     useEffect(() => {
-        setcartItems(data.cart)
-    }, [data])
-
+        setcartItems(location?.state)
+    }, [])
     function total(numbers) {
-        return numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+        return numbers?.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
     }
 
     function flatten(arr) {
-        return arr.reduce((flat, toFlatten) => flat.concat(toFlatten), []);
+        return arr?.reduce((flat, toFlatten) => flat.concat(toFlatten), []);
     }
 
-    const prices = flatten(cartItems.map(item => item.current_price.map(price => price.NGN[0]) * item?.quantity));
+    const prices = flatten(cartItems?.map(item => item.current_price.map(price => price.NGN[0]) * item?.quantity));
 
 
 

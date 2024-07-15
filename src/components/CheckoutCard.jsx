@@ -78,7 +78,7 @@ export default function CheckoutCard() {
                 <button
                     onClick={() => {
                         setCheckoutLoading(true);
-                        delayedNavigate('/order-confirm');
+                        delayedNavigate('/order-confirm', cartItems);
                     }}
                     className="py-[12px] w-full rounded-[6px] bg-primary text-white flex justify-center items-center text-[11px] cursor-pointer hover:bg-black duration-150">Continue to Checkout</button>
                 <hr className='border-grey' />
