@@ -4,11 +4,11 @@ import { productData } from '../api/productData'
 import useFetch from '../api/useFetch'
 import PaginateBar from './PaginateBar'
 
-export default function ProductList() {
+export default function ProductList({ref}) {
   const [barToggle, setBarToggle] = useState(1)
 
   const [currentPage, setCurrentPage] = useState(1)
-  const { data, loading, error } = useFetch(`/api/?organization_id=${import.meta.env.VITE_ORGANIZATION_ID}&reverse_sort=false&page=${currentPage}&size=12&Appid=${import.meta.env.VITE_APP_ID}&Apikey=${import.meta.env.VITE_API_KEY}`)
+  const { data, loading, error } = useFetch(`/?organization_id=${import.meta.env.VITE_ORGANIZATION_ID}&reverse_sort=false&page=${currentPage}&size=12&Appid=${import.meta.env.VITE_APP_ID}&Apikey=${import.meta.env.VITE_API_KEY}`)
 
 
   const [products, setProducts] = useState(data?.data?.items)
@@ -50,7 +50,7 @@ export default function ProductList() {
           >All Products</div>
         </div>
 
-        <div className={`w-full ${barToggle == 1 ? "block" : "hidden"} grid grid-cols-3 max-[1127px]:grid-cols-2 max-[972px]:grid-cols-2 max-[640px]:grid-cols-1 gap-[40px]`}>
+        <div ref={ref} className={`w-full ${barToggle == 1 ? "block" : "hidden"} grid grid-cols-3 max-[1127px]:grid-cols-2 max-[972px]:grid-cols-2 max-[640px]:grid-cols-1 gap-[40px]`}>
           <ProductCard data={productData} products={products} loading={loading} />
         </div>
         <div className={`w-full ${barToggle == 2 ? "block" : "hidden"} grid grid-cols-3 max-[1127px]:grid-cols-2 max-[972px]:grid-cols-2 max-[640px]:grid-cols-1 gap-[40px]`}>

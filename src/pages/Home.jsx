@@ -1,8 +1,16 @@
-import React from 'react'
+import React, {useRef} from 'react'
 import bgImage from "../assets/blue-armchair.jpg"
 import ProductList from '../components/ProductList'
 
 export default function Home() {
+  
+  const targetRef = useRef(null);
+
+  const scrollToTarget = () => {
+    if (targetRef.current) {
+      targetRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
     return (
         <>
             <div className="bg-white sm:bg-[#F2F2F2]">
@@ -14,7 +22,9 @@ export default function Home() {
                         <div className=" w-[500px]">
                             <p className="text-white text-[17px]">Discover our exquisite collection of furniture designed to elevate your living spaces.</p>
                         </div>
-                        <button className="px-[90px] py-[15px] rounded-[5px] bg-primary text-white self-start hover:bg-black duration-150">Order Now</button>
+                        <button
+                        onClick={()=>scrollToTarget()}
+                        className="px-[90px] py-[15px] rounded-[5px] bg-primary text-white self-start hover:bg-black duration-150">Order Now</button>
                     </div>
                 </div>
 
@@ -25,7 +35,9 @@ export default function Home() {
                     <div className=" w-[100%]">
                         <p className="text-black text-[14px]">Discover our exquisite collection of furniture designed to elevate your living spaces.</p>
                     </div>
-                    <button className="px-[90px] py-[15px] rounded-[5px] bg-primary text-white self-start hover:bg-black duration-150">Order Now</button>
+                    <button
+                    onClick={()=>scrollToTarget()}
+                    className="px-[90px] py-[15px] rounded-[5px] bg-primary text-white self-start hover:bg-black duration-150">Order Now</button>
                 </div>
             </div>
 
@@ -33,7 +45,7 @@ export default function Home() {
 
 
             <div className="">
-                <ProductList />
+                <ProductList ref={targetRef}/>
             </div>
         </>
     )

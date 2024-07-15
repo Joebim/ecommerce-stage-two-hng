@@ -8,8 +8,14 @@ export const ContextProvider = ({ children }) => {
     return savedData ? JSON.parse(savedData) : [];
   });
 
+  const [like, setLike] = useState(() => {
+    const savedData = sessionStorage.getItem('like');
+    return savedData ? JSON.parse(savedData) : [];
+  });
+
   useEffect(() => {
     sessionStorage.setItem('cart', JSON.stringify(cart));
+    sessionStorage.setItem('like', JSON.stringify(like));
   }, [cart]);
 
   const addToCart = (item) => {
@@ -27,6 +33,21 @@ export const ContextProvider = ({ children }) => {
 
   const removeFromCart = (id) => {
     setCart((prevData) => prevData.filter(item => item.id !== id));
+  };
+
+  const addToWishlist = (item) => {
+    setLike((prevData) => {
+      const existingItem = prevData.find(wishlistItem => wishlistItem.id === item.id);
+      if (existingItem) {
+        return prevData;
+      } else {
+        return [...prevData, item];
+      }
+    });
+  };
+
+  const removeFromWishlist = (id) => {
+    setLike((prevData) => prevData.filter(item => item.id !== id));
   };
 
   const increaseQuantity = (id) => {
@@ -48,8 +69,12 @@ export const ContextProvider = ({ children }) => {
   return (
     <Context.Provider value={{
       cart,
+      setCart,
+      like,
       addToCart,
       removeFromCart,
+      addToWishlist,
+      removeFromWishlist,
       increaseQuantity,
       decreaseQuantity
     }}>

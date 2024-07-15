@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { ReactComponent as Logo } from '../assets/logo.svg'
-import { ReactComponent as ArrowDown } from '../assets/arrow-down.svg'
+import { ReactComponent as User } from '../assets/user.svg'
 import { ReactComponent as Cart } from '../assets/cart.svg'
 import { ReactComponent as Heart } from '../assets/heart.svg'
 import { ReactComponent as Help } from '../assets/help.svg'
-import { ReactComponent as User } from '../assets/user.svg'
 import { ReactComponent as Search } from '../assets/search.svg'
 import { ReactComponent as Menu } from '../assets/menu.svg'
 import { Link, useLocation } from 'react-router-dom'
 import { useContext } from 'react'
 import { Context } from '../api/Context'
+import Dropdown from './Dropdown'
 
 export default function Navbar() {
 
@@ -20,6 +20,48 @@ export default function Navbar() {
     useEffect(() => {
         setcartItems(data.cart)
     }, [data])
+
+
+const menuUserOptions = [
+    {
+        option:"Profile",
+        link:""
+    },
+    {
+        option:"Settings",
+        link:""
+    },
+    {
+        option:"Earnings",
+        link:""
+    },
+    {
+        option:"Sign out",
+        link:""
+    },
+]
+
+const menuHelpOptions = [
+    {
+        option:"Support",
+        link:""
+    },
+    {
+        option:"Inquiry",
+        link:""
+    },
+    {
+        option:"Contact Us",
+        link:""
+    },
+    {
+        option:"Feedback",
+        link:""
+    },
+]
+
+
+
 
 
 
@@ -63,18 +105,10 @@ export default function Navbar() {
 
             <div className="flex flex-row items-center gap-[20px]">
 
-                <div className="flex flex-row items-center gap-[10px] cursor-pointer">
-                    <User />
-                    <p className="md:block hidden">Krishina</p>
-                    <ArrowDown className="md:block hidden" />
-                </div>
+                <Dropdown text="Krishina" Vector={User} menuOptions={menuUserOptions}/>
 
 
-                <div className="flex-row items-center gap-[10px] md:flex hidden cursor-pointer">
-                    <Help />
-                    <p className="">Help</p>
-                    <ArrowDown className="" />
-                </div>
+                <Dropdown text="Help" Vector={Help} menuOptions={menuHelpOptions}/>
 
 
                 <Link to="" className='md:hidden block'>
@@ -85,10 +119,10 @@ export default function Navbar() {
 
                 </Link>
 
-                <Link to="" className='md:block hidden'>
+                <Link to="/wishlist" className=''>
                     <div className="flex flex-row items-center gap-[10px] py-[5px] hover:border-b-[1px] hover:border-grey">
                         <Heart />
-                        <p className="">Wishlist</p>
+                        <p className="md:block hidden">Wishlist</p>
                     </div>
                 </Link>
 
