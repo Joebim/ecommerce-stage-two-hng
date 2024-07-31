@@ -46,7 +46,6 @@ export default function Cart(props) {
   const prices = flatten(cartItems.map(item => item.current_price.map(price => price.NGN[0]) * item?.quantity));
 
 
-
   return (
     <div className='pt-[80px] px-[30px] mb-[70px] sm:px-[90px] bg-white'>
       <div className="py-[50px]">

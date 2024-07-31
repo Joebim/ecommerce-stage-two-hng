@@ -4,7 +4,7 @@ import { productData } from '../api/productData'
 import useFetch from '../api/useFetch'
 import PaginateBar from './PaginateBar'
 
-export default function ProductList({ref}) {
+export default function ProductList({parentRef}) {
   const [barToggle, setBarToggle] = useState(1)
 
   const [currentPage, setCurrentPage] = useState(1)
@@ -50,7 +50,7 @@ export default function ProductList({ref}) {
           >All Products</div>
         </div>
 
-        <div ref={ref} className={`w-full ${barToggle == 1 ? "block" : "hidden"} grid grid-cols-3 max-[1127px]:grid-cols-2 max-[972px]:grid-cols-2 max-[640px]:grid-cols-1 gap-[40px]`}>
+        <div ref={parentRef} className={`w-full ${barToggle == 1 ? "block" : "hidden"} grid grid-cols-3 max-[1127px]:grid-cols-2 max-[972px]:grid-cols-2 max-[640px]:grid-cols-1 gap-[40px]`}>
           <ProductCard data={productData} products={products} loading={loading} />
         </div>
         <div className={`w-full ${barToggle == 2 ? "block" : "hidden"} grid grid-cols-3 max-[1127px]:grid-cols-2 max-[972px]:grid-cols-2 max-[640px]:grid-cols-1 gap-[40px]`}>

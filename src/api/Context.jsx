@@ -76,7 +76,8 @@ export const ContextProvider = ({ children }) => {
       addToWishlist,
       removeFromWishlist,
       increaseQuantity,
-      decreaseQuantity
+      decreaseQuantity,
+      setCart
     }}>
       {children}
     </Context.Provider>

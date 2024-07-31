@@ -10,6 +10,12 @@ import { ReactComponent as Truck } from "../assets/truck.svg"
 import { ReactComponent as Refresh } from "../assets/refresh.svg"
 import { useContext } from 'react'
 import { Context } from '../api/Context'
+import 'swiper/css';
+import 'swiper/css/scrollbar';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Keyboard, Scrollbar, Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 export default function ProductView(props) {
 
@@ -23,7 +29,7 @@ export default function ProductView(props) {
     setProduct(location.state)
   }, [location])
 
-
+console.log(product)
 
   return (
     <div className='pt-[80px] px-[30px] mb-[70px] sm:px-[90px] bg-white'>
@@ -32,10 +38,32 @@ export default function ProductView(props) {
           <div className="flex-[4] flex flex-col sm:flex-row gap-[10px]">
 
             <div className="flex-[1.1] flex flex-col gap-[20px]">
-              <div className=" bg-cover bg-center bg-no-repeat h-[300px] w-[100%]"
-                                        style={{ backgroundImage: `url(${`https://api.timbu.cloud/images/`}${product?.photos[0]?.url})` }}
+               <Swiper
+            spaceBetween={5}
+            slidesPerView={1}
+            centeredSlides={false}
+            slidesPerGroupSkip={2}
+            grabCursor={false}
+            keyboard={{
+              enabled: true,
+            }}
+            scrollbar={false}
+            navigation={true}
+            pagination={false}
+            modules={[Keyboard, Scrollbar, Navigation, Pagination]}
+            className="mySwiper"
+          >
+
+            {product?.photos?.map((img, id) => (
+               <SwiperSlide key={id}>
+                               <div className=" bg-cover bg-center bg-no-repeat h-[300px] w-[100%]"
+                                        style={{ backgroundImage: `url(${`https://api.timbu.cloud/images/`}${img.url})` }}
                                         >
               </div>
+                 
+              </SwiperSlide>
+            ))}
+             </Swiper >
               <a href='' aria-disabled="true" className="hover:text-primary cursor-pointer text-[15px] underline">Share this product</a>
             </div>
 
@@ -110,7 +138,7 @@ export default function ProductView(props) {
 
         </div>
       </div>
-      <ProductCarousel data={productData} />
+      <ProductCarousel />
     </div>
   )
 }
