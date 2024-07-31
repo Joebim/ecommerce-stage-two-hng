@@ -69,7 +69,6 @@ export const ContextProvider = ({ children }) => {
   return (
     <Context.Provider value={{
       cart,
-      setCart,
       like,
       addToCart,
       removeFromCart,
