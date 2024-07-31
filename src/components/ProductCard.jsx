@@ -54,12 +54,14 @@ export default function ProductCard(props) {
                                 <p className="text-[13px]">{product.name}</p>
                                 <div className="">
                                     <p className='text-[14px]'>{price(product?.current_price.map(price => price.NGN[0]))}</p>
-                                    {/* <div className="flex flex-row gap-[10px] items-center">
-                                        <p className="text-grey line-through text-[14px]">{price(product.discounted_price)}</p>
-                                        <div className="p-[3px] bg-primaryLight text-[11px]">-{product.percentage_off}%</div>
+                                    
+                           {/*}<div className="flex flex-row gap-[10px] items-center">
+                                        <p className="text-grey line-through text-[14px]">{JSON.parse(product?.description)?.discounted_price}</p>
+                                        
+                                        <div className="p-[3px] bg-primaryLight text-[11px]">-{JSON.parse(product?.description)?.percentage_off}%</div>
                                     </div> */}
                                 </div>
-                                {/* <div className="flex flex-row items-center gap-[10px]"><Rating rating={product.rating} /><p className='text-[13px]'>({product.number_rated})</p></div> */}
+                             {/*}   <div className="flex flex-row items-center gap-[10px]"><Rating rating={JSON.parse(product?.description)?.rating} /><p className='text-[13px]'>({JSON.parse(product?.description).percentage_discount})</p></div> */}
                             </div>
 
                             <button onClick={() => addToCart(product)} className="py-[12px] rounded-[6px] bg-primary text-white flex justify-center items-center text-[12px] cursor-pointer hover:bg-black duration-150">Add to Cart</button>

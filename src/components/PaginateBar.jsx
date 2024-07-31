@@ -10,7 +10,7 @@ export default function PaginateBar({ data, currentPage, setCurrentPage }) {
         <div>
             <nav className="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
                 <div 
-                onClick={()=>setCurrentPage(currentPage-1)}
+                onClick={()=>{currentPage<=1 ? {} : setCurrentPage(currentPage-1)}}
                 aria-disabled={currentPage<=1}
                 className={`${currentPage<=1 ? "text-grey" : "text-black"} cursor-pointer bg-white hover:bg-primaryLight relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0`}>
                     <span className="sr-only">Previous</span>
@@ -27,8 +27,8 @@ export default function PaginateBar({ data, currentPage, setCurrentPage }) {
 
                 {/* <span className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0">...</span> */} 
                 <div 
-                onClick={()=> setCurrentPage(currentPage+1)}
-                aria-disabled={currentPage<=1}
+                onClick={()=> {currentPage>=totalPages ? {} : setCurrentPage(currentPage+1)}}
+                aria-disabled={currentPage>=totalPages}
                 className={`${currentPage>=totalPages ? "text-grey" : "text-black"} cursor-pointer bg-white hover:bg-primaryLight relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0`}>
                     <span className="sr-only">Next</span>
                     <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">

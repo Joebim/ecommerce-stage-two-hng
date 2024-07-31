@@ -119,10 +119,10 @@ const menuHelpOptions = [
 
                 </Link>
 
-                <Link to="/wishlist" className='md:block hidden'>
+                <Link to="/wishlist" className=''>
                     <div className="flex flex-row items-center gap-[10px] py-[5px] hover:border-b-[1px] hover:border-grey">
                         <Heart />
-                        <p className="">Wishlist</p>
+                        <p className="md:block hidden">Wishlist</p>
                     </div>
                 </Link>
 

@@ -40,7 +40,7 @@ export default function CheckoutCard() {
     return (
 
         <>
-            <div class={`${checkoutLoading ? "block" : "hidden"} w-full h-[100vh] fixed top-0 left-0 bg-white opacity-75 z-50`}>
+            <div className={`${checkoutLoading ? "block" : "hidden"} w-full h-[100vh] fixed top-0 left-0 bg-white opacity-75 z-50`}>
                 <Loader />
             </div>
 
@@ -78,8 +78,7 @@ export default function CheckoutCard() {
                 <button
                     onClick={() => {
                         setCheckoutLoading(true);
-                        delayedNavigate('/order-confirm');
-                        setcartItems([])
+                        delayedNavigate('/order-confirm', cartItems);
                     }}
                     className="py-[12px] w-full rounded-[6px] bg-primary text-white flex justify-center items-center text-[11px] cursor-pointer hover:bg-black duration-150">Continue to Checkout</button>
                 <hr className='border-grey' />
