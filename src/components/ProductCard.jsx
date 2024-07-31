@@ -1,4 +1,3 @@
-import React from 'react'
 import { Rating } from './Rating'
 import { Like } from './Like'
 import { price } from './price'
